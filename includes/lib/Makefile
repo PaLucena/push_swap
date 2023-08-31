@@ -4,6 +4,7 @@ SOURCE_LIBFT_PATH =		src/libft/
 SOURCE_PRINTF_PATH =	src/printf/
 SOURCE_GNL_PATH =		src/gnl/
 SOURCE_OWN_PATH =		src/own/
+SOURCE_PS_PATH =		src/ps/
 
 SOURCE_LIBFT =		ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strlen.c ft_memset.c ft_bzero.c\
 					ft_memcpy.c ft_memmove.c ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c\
@@ -16,6 +17,8 @@ SOURCE_PRINTF =		ft_printf.c ft_putchar.c ft_printchar.c ft_printstr.c ft_printp
 
 SOURCE_GNL =		get_next_line.c get_next_line_utils.c
 
+SOURCE_PS =			ft_long_atoi.c ft_array_len.c
+
 SOURCE_OWN =		ft_strcmp.c
 
 OBJ_PATH =			objs/
@@ -23,16 +26,18 @@ OBJ_LIBFT_PATH =	$(OBJ_PATH)libft/
 OBJ_PRINTF_PATH =	$(OBJ_PATH)printf/
 OBJ_GNL_PATH =		$(OBJ_PATH)gnl/
 OBJ_OWN_PATH =		$(OBJ_PATH)own/
+OBJ_PS_PATH =		$(OBJ_PATH)ps/
 
 OBJ_LIBFT =			$(addprefix $(OBJ_LIBFT_PATH), $(SOURCE_LIBFT:.c=.o))
 OBJ_PRINTF =		$(addprefix $(OBJ_PRINTF_PATH), $(SOURCE_PRINTF:.c=.o))
 OBJ_GNL =			$(addprefix $(OBJ_GNL_PATH), $(SOURCE_GNL:.c=.o))
 OBJ_OWN =			$(addprefix $(OBJ_OWN_PATH), $(SOURCE_OWN:.c=.o))
+OBJ_PS =			$(addprefix $(OBJ_PS_PATH), $(SOURCE_PS:.c=.o))
 
-OBJ = 				$(OBJ_LIBFT) $(OBJ_PRINTF) $(OBJ_GNL) $(OBJ_OWN)
+OBJ = 				$(OBJ_LIBFT) $(OBJ_PRINTF) $(OBJ_GNL) $(OBJ_OWN) $(OBJ_PS)
 
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Werror -Wextra
 RM = rm -rf
 AR = ar rcs
 
@@ -57,6 +62,10 @@ $(OBJ_GNL_PATH)%.o: $(SOURCE_GNL_PATH)%.c
 
 $(OBJ_OWN_PATH)%.o: $(SOURCE_OWN_PATH)%.c
 	@ mkdir -p $(OBJ_OWN_PATH)
+	@ $(CC) $(CFLAGS) -c $< -o $@
+
+$(OBJ_PS_PATH)%.o: $(SOURCE_PS_PATH)%.c
+	@ mkdir -p $(OBJ_PS_PATH)
 	@ $(CC) $(CFLAGS) -c $< -o $@
 
 clean:

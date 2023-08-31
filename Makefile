@@ -6,7 +6,7 @@ SEGFAULT_FLAG = -fsanitize=address
 RM = rm -rf
 
 SRC_PATH = src/
-SRC = main.c
+SRC = main.c check.c utils.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
@@ -28,10 +28,8 @@ RESET	:= \033[0m
 
 all: libft $(NAME)
 
-bonus: libft $(NAME_BONUS)
-
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(SEGFAULT_FLAG) $(OBJ) $(LIBFT) $(NAME)
+	@ gcc $(FLAGS) $(SEGFAULT_FLAG) $(OBJ) $(LIBFT) -o $(NAME)
 	@ echo "\n\t\t$(GREEN)$(BOLD)----Push swap compiled----\n"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
@@ -49,7 +47,7 @@ clean:
 	@ echo "\n\t\t\t$(RED)$(BOLD)Cleaning...\n"
 
 fclean: clean
-	@ $(RM) $(NAME) $(NAME_BONUS)
+	@ $(RM) $(NAME)
 	@ make -C includes/lib/ fclean
 
-.PHONY: all bonus libft re re_bonus clean fclean
+.PHONY: all libft re clean fclean
