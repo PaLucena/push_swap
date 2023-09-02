@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 19:45:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/02 22:36:28 by palucena         ###   ########.fr       */
+/*   Created: 2023/09/02 22:03:05 by palucena          #+#    #+#             */
+/*   Updated: 2023/09/02 23:24:49 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_delete(void *data)
+void	init_a(t_list **a, int ac, char **av)
 {
-	if (data)
-		free(data);
-}
+	int	i;
 
-void	error_msg(int code)
-{
-	if (code == 1)
-		ft_putstr_fd("\033[31;1mError\n", 1);
-	exit (1);
+	i = 1;
+	if (ac == 2)
+	{
+		av = ft_split(av[1], ' ');
+		ac = ft_array_len(av);
+		i--;
+	}
+	while (av[++i])
+		ft_lstadd_back(a, ft_lstnew(ft_atoi(av[i])));
+	// poner el index, pos y algo mas?
 }

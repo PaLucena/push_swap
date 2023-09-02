@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 17:29:21 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 19:36:48 by palucena         ###   ########.fr       */
+/*   Created: 2023/09/02 22:11:10 by palucena          #+#    #+#             */
+/*   Updated: 2023/09/02 22:12:45 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSHSWAP_H
-# define PUSHSWAP_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -19,18 +19,20 @@
 # include <stdbool.h>
 # include "lib/libft.h"
 
-
-typedef struct s_stack
-{
-	int				nb;
-	int				index;
-	struct s_stack	*next;
-}					t_stack;
-
 /*		utils.c			*/
+void	ft_delete(void *data);
 void	error_msg(int code);
 
 /*		check.c			*/
 void	check_args(int ac, char **av);
+
+/*		init.c			*/
+void	init_a(t_list **a, int ac, char **av);
+
+/*		actions.c		*/
+void	ft_push(t_list *a, t_list *b, char iden);
+void	ft_swap(t_list *a, t_list *b, char iden);
+void	ft_rotate(t_list *a, t_list *b, char iden);
+void	ft_reverse_rotate(t_list *a, t_list *b, int iden);
 
 #endif

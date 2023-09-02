@@ -6,15 +6,15 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:36:23 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 19:54:35 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/02 23:07:16 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	check_order(char **av, int a)
 {
-	int	i;
+	int		i;
 	bool	order;
 
 	i = a;
@@ -26,7 +26,7 @@ void	check_order(char **av, int a)
 		i++;
 	}
 	if (order)
-		error_msg(4);
+		error_msg(0);
 }
 
 void	check_int(char **av, int a)
@@ -39,7 +39,7 @@ void	check_int(char **av, int a)
 	{
 		nb = ft_long_atoi(av[i]);
 		if (nb > INT32_MAX || nb < INT32_MIN)
-			error_msg(3);
+			error_msg(1);
 		i++;
 	}
 	check_order(av, a);
@@ -91,12 +91,12 @@ void	check_args(int ac, char **av)
 	i = 1;
 	if (ac < 2)
 		error_msg(0);
-	if (ac == 2)
+	else if (ac == 2 && ft_strchr(av[1], ' ') != 0)
 	{
 		av = ft_split(av[1], ' ');
 		i--;
 	}
-	//separar str en numeros individuales
-	
+	else if (ac == 2)
+		error_msg(0);
 	check_content(av, i);
 }

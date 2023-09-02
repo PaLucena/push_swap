@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:19:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 20:21:08 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/02 21:04:50 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
  * @param del -> address of the function used to delete the content of the
  * 				 element
  */
-void	ft_lstclear(t_list **lst, void (*del)(int))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*actual;
 
@@ -29,7 +29,7 @@ void	ft_lstclear(t_list **lst, void (*del)(int))
 		return ;
 	while (*lst)
 	{
-		del((*lst)->value);
+		del((*lst)->data);
 		actual = *lst;
 		*lst = actual->next;
 		free(actual);

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 20:32:00 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/02 23:09:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@
 
 typedef struct s_list
 {
-	int				value;
+	int				data;
 	int				index;
+	int				pos;
+	int				target_pos;
+	int				cost_a;
+	int				cost_b;
 	struct s_list	*next;
 }					t_list;
 
@@ -41,8 +45,8 @@ int				ft_isprint(int c);
 char			*ft_itoa(int n);
 void			ft_lstadd_back(t_list **lst, t_list *new);
 void			ft_lstadd_front(t_list **lst, t_list *new);
-void			ft_lstclear(t_list **lst, void (*del)(int));
-void			ft_lstdelone(t_list *lst, void (*del)(int));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
 void			ft_lstiter(t_list *lst, void (*f)(int));
 t_list			*ft_lstlast(t_list *lst);
 t_list			*ft_lstnew(int value);

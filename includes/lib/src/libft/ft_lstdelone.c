@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:01:47 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 20:20:22 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/02 21:04:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
  * @param lst -> the element to free
  * @param del -> the address of the function used to delete the content
  */
-void	ft_lstdelone(t_list *lst, void (*del)(int))
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	t_list	*actual;
 
 	if (!lst || !del)
 		return ;
-	del(lst->value);
+	del(lst->data);
 	actual = lst;
 	lst = actual->next;
 	free(actual);

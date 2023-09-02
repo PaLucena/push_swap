@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/28 13:47:35 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 20:22:15 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/02 20:52:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_lstiter(t_list *lst, void (*f)(int))
 		return ;
 	while (lst)
 	{
-		f(lst->value);
+		f(lst->data);
 		lst = lst->next;
 	}
 }
