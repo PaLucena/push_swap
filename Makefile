@@ -6,7 +6,7 @@ SEGFAULT_FLAG = -fsanitize=address
 RM = rm -rf
 
 SRC_PATH = src/
-SRC = actions.c algorithm.c check.c init.c main.c utils.c
+SRC = actions.c algorithm.c check.c init.c main.c step.c utils.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
@@ -30,7 +30,7 @@ all: libft $(NAME)
 
 $(NAME): $(OBJ)
 	@ gcc $(FLAGS) $(SEGFAULT_FLAG) $(OBJ) $(LIBFT) -o $(NAME)
-	@ echo "\n\t\t$(GREEN)$(BOLD)----Push swap compiled----\n"
+	@ echo "\n\t\t$(GREEN)$(BOLD)----Push swap compiled----\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)

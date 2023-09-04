@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:11:10 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/02 22:12:45 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/04 18:55:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,27 @@
 # include <stdbool.h>
 # include "lib/libft.h"
 
-/*		utils.c			*/
-void	ft_delete(void *data);
-void	error_msg(int code);
+/*		actions.c		*/
+void	ft_push(t_list **stack_to, t_list **stack_from, char iden);
+void	ft_swap(t_list **a, t_list **b, char iden);
+void	ft_rotate(t_list **a, t_list **b, char iden);
+void	ft_reverse_rotate(t_list **a, t_list **b, int iden);
+
+/*		algorithm.c		*/
+void	ft_algorithm(t_list **a, t_list **b, int max_index);
 
 /*		check.c			*/
-void	check_args(int ac, char **av);
+int		check_args(int ac, char **av);
 
 /*		init.c			*/
-void	init_a(t_list **a, int ac, char **av);
+t_list	*init_a(t_list *a, int ac, char **av);
 
-/*		actions.c		*/
-void	ft_push(t_list *a, t_list *b, char iden);
-void	ft_swap(t_list *a, t_list *b, char iden);
-void	ft_rotate(t_list *a, t_list *b, char iden);
-void	ft_reverse_rotate(t_list *a, t_list *b, int iden);
+/*		step.c			*/
+void	ft_push_all(t_list **a, t_list **b, int maxIndex);
+
+/*		utils.c			*/
+void	ft_print_stack(t_list *stack);
+void	ft_delete(void *data);
+void	error_msg(int code);
 
 #endif

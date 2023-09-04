@@ -6,24 +6,63 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:03:05 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/02 23:24:49 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:10:31 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	init_a(t_list **a, int ac, char **av)
+void	ft_index(t_list *stack)
 {
-	int	i;
+	t_list	*current;
+	t_list	*tmp;
 
-	i = 1;
+	current = stack;
+	while (current)
+	{
+		tmp = stack;
+		current->index = 1;
+		while (tmp)
+		{
+			if (tmp->data < current->data)
+				current->index++;
+			tmp = tmp->next;
+		}
+		current = current->next;
+	}
+}
+
+void	ft_position(t_list *a)
+{
+	int	p;
+
+	p = 1;
+	while (a)
+	{
+		a->pos = p;
+		a = a->next;
+		p++;
+	}
+}
+
+t_list	*init_a(t_list *a, int ac, char **av)
+{
+	char	**argv;
+	int		maxIndex;
+	int		i;
+
+	i = 0;
+	maxIndex = ac;
+	argv = av;
 	if (ac == 2)
 	{
-		av = ft_split(av[1], ' ');
-		ac = ft_array_len(av);
+		argv = ft_split(av[1], ' ');
+		maxIndex = ft_lstsize(a) + 1;
 		i--;
 	}
-	while (av[++i])
-		ft_lstadd_back(a, ft_lstnew(ft_atoi(av[i])));
-	// poner el index, pos y algo mas?
+	while (argv[++i] != NULL)
+		ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i])));
+	ft_index(a);
+	ft_position(a);
+	return (a);
 }

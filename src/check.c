@@ -6,11 +6,11 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:36:23 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/02 23:07:16 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/04 15:44:14 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	check_order(char **av, int a)
 {
@@ -84,19 +84,25 @@ void	check_content(char **av, int a)
 	check_repeat(av, a);
 }
 
-void	check_args(int ac, char **av)
+int	check_args(int ac, char **av)
 {
-	int	i;
+	char	**argv;
+	int		argc;
+	int		i;
 
 	i = 1;
+	argv = av;
+	argc = ac;
 	if (ac < 2)
 		error_msg(0);
 	else if (ac == 2 && ft_strchr(av[1], ' ') != 0)
 	{
-		av = ft_split(av[1], ' ');
+		argv = ft_split(av[1], ' ');
+		argc = ft_array_len(argv) + 1;
 		i--;
 	}
 	else if (ac == 2)
 		error_msg(0);
-	check_content(av, i);
+	check_content(argv, i);
+	return (argc - 1);
 }
