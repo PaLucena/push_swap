@@ -6,32 +6,37 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:35:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/02 22:47:22 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/04 20:05:52 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /**
  * @brief Makes pa or pb
  * 
- * @param a -> Stack a
- * @param b -> Stack b
- * @param iden -> 'a' if pa, 'b' if pb
+ * @param stack_to -> The stack from which you take the element
+ * @param stack_from -> The stack in which you push the element
+ * @param iden -> 'a' for pa, 'b' for pb
  */
-void	ft_push(t_list *a, t_list *b, char iden)
+void	ft_push(t_list **stack_to, t_list **stack_from, char iden)
 {
-	if (iden == 'a' && b != NULL)
+	t_list	*tmp;
+
+	if (stack_from)
 	{
-		ft_lstadd_front(&a, b->data);
-		ft_lstdelone(a, ft_delete);
-		b = b->next;
-	}
-	if (iden == 'b' && a != NULL)
-	{
-		ft_lstadd_front(&b, a->data);
-		ft_lstdelone(a, ft_delete);
-		a = a->next;
+		tmp = *stack_from;
+		*stack_from = (*stack_from)->next;
+		if (!(*stack_to))
+		{
+			*stack_to = tmp;
+			(*stack_to)->next = NULL;
+		}
+		else
+		{
+			tmp->next = *stack_to;
+			*stack_to = tmp;
+		}
 	}
 	ft_printf("p%c\n", iden);
 }
@@ -43,21 +48,26 @@ void	ft_push(t_list *a, t_list *b, char iden)
  * @param b -> Stack b
  * @param iden -> 'a' if sa, 'b' if sb, 's' if ss
  */
-void	ft_swap(t_list *a, t_list *b, char iden)
+void	ft_swap(t_list **a, t_list **b, char iden)
 {
-	int	tmp;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	if (iden == 'a' || iden == 's')
 	{
-		tmp = a->data;
-		a->data = a->next->data;
-		a->next->data = tmp;
+		tmp1 = *a;
+		tmp2 = (*a)->next;
+		*a = tmp2;
+		tmp1->next = tmp2->next;
+		tmp2->next = tmp1;
 	}
 	if (iden == 'b' || iden == 's')
 	{
-		tmp = b->data;
-		b->data = b->next->data;
-		b->next->data = tmp;
+		tmp1 = *b;
+		tmp2 = (*b)->next;
+		tmp2->next = tmp1;
+		tmp2->next->next = (*b)->next->next;
+		*b = tmp1;
 	}
 	ft_printf("s%c\n", iden);
 }
@@ -69,48 +79,39 @@ void	ft_swap(t_list *a, t_list *b, char iden)
  * @param b -> Stack b
  * @param iden -> 'a' if ra, 'b' if r, 'r' if rr
  */
-void	ft_rotate(t_list *a, t_list *b, char iden)
+void	ft_rotate(t_list **a, t_list **b, char iden)
 {
-	int	tmp;
+	t_list	*tmp;
 
 	if (iden == 'a' || iden == 'r')
 	{
-		tmp = a->data;
-		while (a->next != NULL)
-		{
-			a->data = a->next->data;
-			a = a->next;
-		}
-		a->data = tmp;
+		tmp = *a;
+		*a = (*a)->next;
+		ft_lstlast(*a)->next = tmp;
+		tmp->next = NULL;
 	}
 	if (iden == 'b' || iden == 'r')
 	{
-		tmp = b->data;
-		while (b->next != NULL)
-		{
-			b->data = b->next->data;
-			b = b->next;
-		}
-		b->data = tmp;
+		tmp = *b;
+		*b = (*b)->next;
+		ft_lstlast(*b)->next = tmp;
+		tmp->next = NULL;
 	}
 	ft_printf("r%c\n", iden);
 }
 
-void	ft_rr2(t_list *stack)
+void	ft_rr2(t_list **stack)
 {
-	int	tmp1;
-	int	tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-	tmp1 = stack->data;
-	stack->data = ft_lstlast(stack)->data;
-	stack = stack->next;
-	while (stack->next != NULL)
-	{
-		tmp2 = stack->data;
-		stack->data = tmp1;
-		tmp1 = tmp2;
-		stack = stack->next;
-	}
+	tmp1 = ft_lstlast(*stack);
+	tmp2 = *stack;
+	while (tmp2->next->next)
+		tmp2 = tmp2->next;
+	tmp2->next = NULL;
+	tmp1->next = *stack;
+	*stack = tmp1;
 }
 
 /**
@@ -120,11 +121,8 @@ void	ft_rr2(t_list *stack)
  * @param b -> Stack b
  * @param iden -> 'a' if rra, 'b' if rra, 'r' if rrr
  */
-void	ft_reverse_rotate(t_list *a, t_list *b, int iden)
+void	ft_reverse_rotate(t_list **a, t_list **b, int iden)
 {
-	int		tmp1;
-	int		tmp2;
-
 	if (iden == 'a' || iden == 'r')
 		ft_rr2(a);
 	if (iden == 'b' || iden == 'r')
