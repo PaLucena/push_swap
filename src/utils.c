@@ -6,20 +6,32 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:45:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/04 15:23:51 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/05 12:45:21 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_print_stack(t_list	*stack)
+void	ft_print_stack(t_list *a, t_list *b)
 {
 	t_list	*actual;
 
-	actual = stack;
+	actual = a;
+	ft_printf("\n\tStack A:\n");
+	if (!actual)
+		ft_printf("\t\tVACÍO\n");
 	while (actual)
 	{
-		ft_printf("Elemento: %d\t Indice: %d\n", actual->data, actual->index);
+		ft_printf("Elemento: %d\tIndice: %d\tPosición: %d\n", actual->data, actual->index, actual->pos);
+		actual = actual->next;
+	}
+	actual = b;
+	ft_printf("\n\tStack B:\n");
+	if (!actual)
+		ft_printf("\t\tVACÍO\n");
+	while (actual)
+	{
+		ft_printf("Elemento: %d\tIndice: %d\tPosición: %d\tTarget pos: %d\n", actual->data, actual->index, actual->pos, actual->target_pos);
 		actual = actual->next;
 	}
 }

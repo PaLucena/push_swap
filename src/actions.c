@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:35:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/04 20:05:52 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/05 16:13:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 /**
  * @brief Makes pa or pb
  * 
- * @param stack_to -> The stack from which you take the element
- * @param stack_from -> The stack in which you push the element
+ * @param stack_from -> The stack from which you take the element
+ * @param stack_to -> The stack in which you push the element
  * @param iden -> 'a' for pa, 'b' for pb
  */
-void	ft_push(t_list **stack_to, t_list **stack_from, char iden)
+void	ft_push(t_list **stack_from, t_list **stack_to, char iden)
 {
 	t_list	*tmp;
 
@@ -38,6 +38,8 @@ void	ft_push(t_list **stack_to, t_list **stack_from, char iden)
 			*stack_to = tmp;
 		}
 	}
+	ft_position(*stack_from);
+	ft_position(*stack_to);
 	ft_printf("p%c\n", iden);
 }
 
@@ -69,6 +71,8 @@ void	ft_swap(t_list **a, t_list **b, char iden)
 		tmp2->next->next = (*b)->next->next;
 		*b = tmp1;
 	}
+	ft_position(*a);
+	ft_position(*b);
 	ft_printf("s%c\n", iden);
 }
 
@@ -97,6 +101,8 @@ void	ft_rotate(t_list **a, t_list **b, char iden)
 		ft_lstlast(*b)->next = tmp;
 		tmp->next = NULL;
 	}
+	ft_position(*a);
+	ft_position(*b);
 	ft_printf("r%c\n", iden);
 }
 
@@ -127,5 +133,7 @@ void	ft_reverse_rotate(t_list **a, t_list **b, int iden)
 		ft_rr2(a);
 	if (iden == 'b' || iden == 'r')
 		ft_rr2(b);
+	ft_position(*a);
+	ft_position(*b);
 	ft_printf("rr%c\n", iden);
 }

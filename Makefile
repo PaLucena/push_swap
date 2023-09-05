@@ -6,7 +6,7 @@ SEGFAULT_FLAG = -fsanitize=address
 RM = rm -rf
 
 SRC_PATH = src/
-SRC = actions.c algorithm.c check.c init.c main.c step.c utils.c
+SRC = actions.c algorithm.c check.c init.c main.c steps.c utils.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))

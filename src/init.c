@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:03:05 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/04 15:10:31 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:48:43 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,6 @@ void	ft_index(t_list *stack)
 			tmp = tmp->next;
 		}
 		current = current->next;
-	}
-}
-
-void	ft_position(t_list *a)
-{
-	int	p;
-
-	p = 1;
-	while (a)
-	{
-		a->pos = p;
-		a = a->next;
-		p++;
 	}
 }
 
