@@ -16,7 +16,7 @@ SOURCE_PRINTF =		ft_printf.c ft_putchar.c ft_printchar.c ft_printstr.c ft_printp
 
 SOURCE_GNL =		get_next_line.c get_next_line_utils.c
 
-SOURCE_PS =			ft_long_atoi.c ft_array_len.c
+SOURCE_PS =			ft_long_atoi.c ft_array_len.c ft_position.c ft_target_pos.c
 
 SOURCE_OWN =		ft_strcmp.c
 
