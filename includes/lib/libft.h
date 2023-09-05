@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/03 20:48:13 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:49:06 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdarg.h>
+# include <stddef.h>
 
 typedef struct s_list
 {
@@ -97,5 +98,7 @@ int				ft_strcmp(const char *s1, const char *s2);
 /* push_swap useful functions */
 long			ft_long_atoi(const char *str);
 int				ft_array_len(char **array);
+void			ft_position(t_list *stack);
+void			ft_target_pos(t_list **a, t_list **b);
 
 #endif

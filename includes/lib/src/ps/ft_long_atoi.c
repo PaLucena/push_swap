@@ -6,9 +6,11 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 13:38:26 by palucena          #+#    #+#             */
-/*   Updated: 2023/08/31 19:00:37 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/05 15:10:13 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../libft.h"
 
 /**
  * @brief Converts the initial portion of the string pointed to by str to long.

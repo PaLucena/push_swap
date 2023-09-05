@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_array_len.c                                     :+:      :+:    :+:   */
+/*   ft_position.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/31 20:07:39 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 15:10:06 by palucena         ###   ########.fr       */
+/*   Created: 2023/09/05 15:48:23 by palucena          #+#    #+#             */
+/*   Updated: 2023/09/05 15:48:47 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../libft.h"
 
-int	ft_array_len(char **array)
+void	ft_position(t_list *stack)
 {
-	int	i;
+	int	p;
 
-	i = -1;
-	while (array[i] != NULL)
-		i++;
-	return (i);
+	p = 0;
+	while (stack)
+	{
+		stack->pos = p;
+		stack = stack->next;
+		p++;
+	}
 }
