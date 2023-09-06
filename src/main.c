@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:38:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 18:54:42 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:49:55 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,13 @@ int	main(int ac, char **av)
 	ft_algorithm(&a, &b, maxIndex);
 	puts("DESPUÉS:");
 	ft_print_stack(a, b);
-	//ft_is_sorted(&a);
+	ft_is_sorted(&a);
 }
 
 
 /*
 
-1. Calcular cost_a y cost_b
-2. Buscar el nº con menor coste
-3. Mover ese nº a su sitio
+1. Arreglar errores
+2. Liberar memoria
 
 */

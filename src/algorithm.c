@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:43:56 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 18:56:32 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:43:07 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,21 @@ void	ft_sort_3(t_list **a, t_list **b)
 
 void	ft_sort_more(t_list **a, t_list **b, int maxIndex)
 {
-	t_list	*tmp;
 
-	tmp = *a;
 	ft_push_all(a, b, maxIndex);
-	ft_target_pos(a, b);
-	ft_get_cost(a, b); // calcular cost_a y cost_b
+	while (b)
+	{
+		ft_target_pos(a, b);
+		ft_get_cost(a, b);
+		ft_move_cheapest(a, b);
+	}
+	while (ft_minIndex(a)->pos != 0)
+	{
+		if (ft_minIndex(a)->pos < ft_lstsize(*a) / 2)
+			ft_rotate(a, b, 'a');
+		else
+			ft_reverse_rotate(a, b, 'a');
+	}
 }
 
 void	ft_algorithm(t_list **a, t_list **b, int maxIndex)

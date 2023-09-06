@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:35:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 16:13:23 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:32:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_swap(t_list **a, t_list **b, char iden)
 		*a = tmp2;
 		tmp1->next = tmp2->next;
 		tmp2->next = tmp1;
+		ft_position(*a);
 	}
 	if (iden == 'b' || iden == 's')
 	{
@@ -70,9 +71,8 @@ void	ft_swap(t_list **a, t_list **b, char iden)
 		tmp2->next = tmp1;
 		tmp2->next->next = (*b)->next->next;
 		*b = tmp1;
+		ft_position(*b);
 	}
-	ft_position(*a);
-	ft_position(*b);
 	ft_printf("s%c\n", iden);
 }
 
@@ -93,6 +93,7 @@ void	ft_rotate(t_list **a, t_list **b, char iden)
 		*a = (*a)->next;
 		ft_lstlast(*a)->next = tmp;
 		tmp->next = NULL;
+		ft_position(*a);
 	}
 	if (iden == 'b' || iden == 'r')
 	{
@@ -100,9 +101,8 @@ void	ft_rotate(t_list **a, t_list **b, char iden)
 		*b = (*b)->next;
 		ft_lstlast(*b)->next = tmp;
 		tmp->next = NULL;
+		ft_position(*b);
 	}
-	ft_position(*a);
-	ft_position(*b);
 	ft_printf("r%c\n", iden);
 }
 
@@ -118,6 +118,7 @@ void	ft_rr2(t_list **stack)
 	tmp2->next = NULL;
 	tmp1->next = *stack;
 	*stack = tmp1;
+	ft_position(*stack);
 }
 
 /**
@@ -133,7 +134,5 @@ void	ft_reverse_rotate(t_list **a, t_list **b, int iden)
 		ft_rr2(a);
 	if (iden == 'b' || iden == 'r')
 		ft_rr2(b);
-	ft_position(*a);
-	ft_position(*b);
 	ft_printf("rr%c\n", iden);
 }

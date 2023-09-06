@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:11:10 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 18:56:37 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/06 19:45:33 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ t_list	*init_a(t_list *a, int ac, char **av);
 
 /*		step.c			*/
 void	ft_push_all(t_list **a, t_list **b, int maxIndex);
-void	ft_get_cost(t_list **a, t_list **b),
+void	ft_get_cost(t_list **a, t_list **b);
+void	ft_move_cheapest(t_list **a, t_list **b);
 
 /*		utils.c			*/
 void	ft_print_stack(t_list *a, t_list *b);
+t_list	*ft_minIndex(t_list **stack);
+t_list	*ft_minCost(t_list **stack);
 void	ft_delete(void *data);
 void	error_msg(int code);
 
