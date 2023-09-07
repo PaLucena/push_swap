@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 15:09:07 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 18:52:58 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:20:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_list	*ft_get_first_res(t_list *curr_a, t_list *curr_b)
 			res = curr_a;
 			break ;
 		}
-		curr_a=curr_a->next;
+		curr_a = curr_a->next;
 	}
 	return (res);
 }
@@ -75,4 +75,3 @@ void	ft_target_pos(t_list **a, t_list **b)
 		curr_b = curr_b->next;
 	}
 }
-

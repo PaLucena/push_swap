@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:03:05 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 15:48:43 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:21:51 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,16 @@ void	ft_index(t_list *stack)
 t_list	*init_a(t_list *a, int ac, char **av)
 {
 	char	**argv;
-	int		maxIndex;
+	int		max_index;
 	int		i;
 
 	i = 0;
-	maxIndex = ac;
+	max_index = ac;
 	argv = av;
 	if (ac == 2)
 	{
 		argv = ft_split(av[1], ' ');
-		maxIndex = ft_lstsize(a) + 1;
+		max_index = ft_lstsize(a) + 1;
 		i--;
 	}
 	while (argv[++i] != NULL)

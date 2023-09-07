@@ -29,7 +29,7 @@ RESET	:= \033[0m
 all: libft $(NAME)
 
 $(NAME): $(OBJ)
-	@ gcc $(FLAGS) $(SEGFAULT_FLAG) $(OBJ) $(LIBFT) -o $(NAME)
+	@ gcc $(FLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 	@ echo "\n\t\t$(GREEN)$(BOLD)----Push swap compiled----\n$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c

@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:45:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/06 19:48:53 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:27:03 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_print_stack(t_list *a, t_list *b)
+/* void	ft_print_stack(t_list *a, t_list *b)
 {
 	t_list	*actual;
 
@@ -34,9 +34,21 @@ void	ft_print_stack(t_list *a, t_list *b)
 		ft_printf("Elemento: %d\tIndice: %d\tPosición: %d\tTarget pos: %d\tCost A: %d\tCost B: %d\n", actual->data, actual->index, actual->pos, actual->target_pos, actual->cost_a, actual->cost_b);
 		actual = actual->next;
 	}
+} */
+
+void	ft_clear(t_list **stack)
+{
+	t_list	*actual;
+
+	while (*stack)
+	{
+		actual = *stack;
+		*stack = actual->next;
+		free(actual);
+	}
 }
 
-t_list	*ft_minIndex(t_list **stack)
+t_list	*ft_min_index(t_list **stack)
 {
 	t_list	*current;
 	t_list	*min;
@@ -56,7 +68,7 @@ t_list	*ft_minIndex(t_list **stack)
 	return (min);
 }
 
-t_list	*ft_minCost(t_list **stack)
+t_list	*ft_min_cost(t_list **stack)
 {
 	t_list	*current;
 	t_list	*min;

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/29 16:38:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/06 19:49:55 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:22:39 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,24 +35,14 @@ int	main(int ac, char **av)
 {
 	t_list	*a;
 	t_list	*b;
-	int		maxIndex;
+	int		max_index;
 
-	maxIndex = check_args(ac, av);
+	max_index = check_args(ac, av);
 	a = NULL;
 	b = NULL;
 	a = init_a(a, ac, av);
-	puts("ANTES:");
-	ft_print_stack(a, b);
-	ft_algorithm(&a, &b, maxIndex);
-	puts("DESPUÉS:");
-	ft_print_stack(a, b);
+	ft_algorithm(&a, &b, max_index);
 	ft_is_sorted(&a);
+	ft_clear(&a);
+	ft_clear(&b);
 }
-
-
-/*
-
-1. Arreglar errores
-2. Liberar memoria
-
-*/

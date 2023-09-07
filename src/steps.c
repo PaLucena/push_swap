@@ -6,17 +6,17 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:44:39 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/06 19:47:53 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 14:27:12 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_push_all(t_list **a, t_list **b, int maxIndex)
+void	ft_push_all(t_list **a, t_list **b, int max_index)
 {
-	while (ft_lstsize(*a) > (maxIndex / 2 + 1) && ft_lstsize(*a) > 3)
+	while (ft_lstsize(*a) > (max_index / 2 + 1) && ft_lstsize(*a) > 3)
 	{
-		if ((*a)->index < maxIndex / 2)
+		if ((*a)->index <= max_index / 2)
 			ft_push(a, b, 'b');
 		else
 			ft_rotate(a, b, 'a');
@@ -33,6 +33,8 @@ void	ft_get_cost(t_list **a, t_list **b)
 	curr_b = *b;
 	while (curr_b)
 	{
+		curr_b->cost_a = 0;
+		curr_b->cost_b = 0;
 		if (curr_b->pos < ft_lstsize(*b) / 2)
 			curr_b->cost_b = (curr_b->pos);
 		else
@@ -49,14 +51,18 @@ void	ft_move_a(t_list **a, t_list **b)
 {
 	t_list	*current;
 
-	current = ft_minCost(b);
-	if (ft_minCost(b)->target_pos != 0)
+	while (ft_min_cost(b)->target_pos != 0)
 	{
-		current = ft_minCost(b);
-		if (current->target_pos > ft_lstsize(*a) / 2)
-			ft_reverse_rotate(a, b, 'a');
-		else
-			ft_rotate(a, b, 'a');
+		current = ft_min_cost(b);
+		if (ft_min_cost(b)->target_pos != 0)
+		{
+			current = ft_min_cost(b);
+			if (current->target_pos > ft_lstsize(*a) / 2)
+				ft_reverse_rotate(a, b, 'a');
+			else
+				ft_rotate(a, b, 'a');
+		}
+		ft_target_pos(a, b);
 	}
 }
 
@@ -64,9 +70,9 @@ void	ft_move_cheapest(t_list **a, t_list **b)
 {
 	t_list	*current;
 
-	while (ft_minCost(b)->pos != 0)
+	while (ft_min_cost(b)->pos != 0)
 	{
-		current = ft_minCost(b);
+		current = ft_min_cost(b);
 		if (current->pos > ft_lstsize(*b) / 2)
 		{
 			if (current->target_pos > ft_lstsize(*a) / 2)
@@ -83,7 +89,7 @@ void	ft_move_cheapest(t_list **a, t_list **b)
 		}
 		ft_position(*b);
 		ft_target_pos(a, b);
-		ft_move_a(a, b);
 	}
+	ft_move_a(a, b);
 	ft_push(b, a, 'a');
 }
