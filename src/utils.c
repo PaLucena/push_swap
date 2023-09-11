@@ -6,35 +6,11 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 19:45:19 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/07 14:27:03 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:45:23 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/* void	ft_print_stack(t_list *a, t_list *b)
-{
-	t_list	*actual;
-
-	actual = a;
-	ft_printf("\n\tStack A:\n");
-	if (!actual)
-		ft_printf("\t\tVACÍO\n");
-	while (actual)
-	{
-		ft_printf("Elemento: %d\tIndice: %d\tPosición: %d\n", actual->data, actual->index, actual->pos);
-		actual = actual->next;
-	}
-	actual = b;
-	ft_printf("\n\tStack B:\n");
-	if (!actual)
-		ft_printf("\t\tVACÍO\n");
-	while (actual)
-	{
-		ft_printf("Elemento: %d\tIndice: %d\tPosición: %d\tTarget pos: %d\tCost A: %d\tCost B: %d\n", actual->data, actual->index, actual->pos, actual->target_pos, actual->cost_a, actual->cost_b);
-		actual = actual->next;
-	}
-} */
 
 void	ft_clear(t_list **stack)
 {
@@ -97,6 +73,6 @@ void	ft_delete(void *data)
 void	error_msg(int code)
 {
 	if (code == 1)
-		ft_putstr_fd("\033[31;1mError\n", 1);
+		ft_putstr_fd("Error\n", 1);
 	exit (1);
 }

@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 20:07:39 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/05 15:10:06 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:48:31 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_array_len(char **array)
 {
 	int	i;
 
-	i = -1;
+	i = 0;
 	while (array[i] != NULL)
 		i++;
 	return (i);

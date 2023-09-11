@@ -1,4 +1,5 @@
 NAME = push_swap
+BONUS_NAME = checker
 
 CC = gcc
 FLAGS = -Wall -Wextra -Werror -g
@@ -6,10 +7,15 @@ SEGFAULT_FLAG = -fsanitize=address
 RM = rm -rf
 
 SRC_PATH = src/
+SRC_BONUS_PATH = src/checker/
 SRC = actions.c algorithm.c check.c init.c main.c steps.c utils.c
+SRC_BONUS_A = checker.c bonus_utils.c
+SRC_BONUS_B = actions.c check.c init.c utils.c
 
 OBJ_PATH = objs/
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.c=.o))
+OBJ_BONUS_A = $(addprefix $(OBJ_PATH), $(SRC_BONUS_A:.c=.o))
+OBJ_BONUS_B = $(addprefix $(OBJ_PATH), $(SRC_BONUS_B:.c=.o))
 
 INC = -I includes/lib
 LIBFT = includes/lib/libft.a
@@ -36,6 +42,19 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@ mkdir -p  $(OBJ_PATH)
 	@ $(CC) $(FLAGS) $(INC) -c $< -o $@
 
+bonus: libft $(BONUS_NAME)
+$(BONUS_NAME): $(OBJ_BONUS_A) $(OBJ_BONUS_B)
+	@ gcc $(FLAGS) $(OBJ_BONUS_A) $(OBJ_BONUS_B) $(LIBFT) -o $(BONUS_NAME)
+	@ echo "\n\t\t$(GREEN)$(BOLD) ----Checker compiled----\n$(RESET)"
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@ mkdir -p  $(OBJ_PATH)
+	@ $(CC) $(FLAGS) $(INC) -c $< -o $@
+
+$(OBJ_PATH)%.o: $(SRC_BONUS_PATH)%.c
+	@ mkdir -p  $(OBJ_PATH)
+	@ $(CC) $(FLAGS) $(INC) -c $< -o $@
+
 libft:
 	@ make -C includes/lib/
 
@@ -47,7 +66,7 @@ clean:
 	@ echo "\n\t\t\t$(RED)$(BOLD)Cleaning...\n"
 
 fclean: clean
-	@ $(RM) $(NAME)
+	@ $(RM) $(NAME) $(BONUS_NAME)
 	@ make -C includes/lib/ fclean
 
-.PHONY: all libft re clean fclean
+.PHONY: all libft re clean fclean bonus

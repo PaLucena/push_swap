@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:36:23 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/04 15:44:14 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:57:16 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	check_repeat(char **av, int a)
 		while (av[++j] != NULL)
 		{
 			if (ft_strcmp(av[i], av[j]) == 0)
-				error_msg(2);
+				error_msg(1);
 		}
 		i++;
 	}

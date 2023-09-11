@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:11:10 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/07 14:27:18 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/11 17:52:34 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@
 # include "lib/libft.h"
 
 /*		actions.c		*/
-void	ft_push(t_list **stack_from, t_list **stack_to, char iden);
-void	ft_swap(t_list **a, t_list **b, char iden);
-void	ft_rotate(t_list **a, t_list **b, char iden);
-void	ft_reverse_rotate(t_list **a, t_list **b, int iden);
+void	ft_push(t_list **stack_from, t_list **stack_to, char iden, bool pr);
+void	ft_swap(t_list **a, t_list **b, char iden, bool pr);
+void	ft_rotate(t_list **a, t_list **b, char iden, bool pr);
+void	ft_reverse_rotate(t_list **a, t_list **b, int iden, bool pr);
 
 /*		algorithm.c		*/
 void	ft_sort_3(t_list **a, t_list **b);
@@ -43,11 +43,13 @@ void	ft_get_cost(t_list **a, t_list **b);
 void	ft_move_cheapest(t_list **a, t_list **b);
 
 /*		utils.c			*/
-void	ft_print_stack(t_list *a, t_list *b);
 void	ft_clear(t_list **stack);
 t_list	*ft_min_index(t_list **stack);
 t_list	*ft_min_cost(t_list **stack);
 void	ft_delete(void *data);
 void	error_msg(int code);
+
+/*		bonus_utils.c	*/
+void	ft_apply(t_list **a, t_list **b);
 
 #endif
