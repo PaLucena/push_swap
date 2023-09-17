@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:35:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 15:27:54 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/17 19:03:05 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	ft_reverse_rotate(t_list **a, t_list **b, int iden, bool pr)
 {
 	if (iden == 'a' || iden == 'r')
 		ft_rr2(a);
-	if (iden == 'b' || iden == 'r')
+	if ((iden == 'b' || iden == 'r') && *b)
 		ft_rr2(b);
 	if (pr)
 		ft_printf("rr%c\n", iden);
