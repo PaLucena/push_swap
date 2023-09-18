@@ -69,4 +69,16 @@ fclean: clean
 	@ $(RM) $(NAME) $(BONUS_NAME)
 	@ make -C includes/lib/ fclean
 
-.PHONY: all libft re clean fclean bonus
+test3:
+	@ python3 pyviz.py `ruby -e "puts (1..3).to_a.shuffle.join(' ')"`
+
+test10:
+	@ python3 pyviz.py `ruby -e "puts (1..10).to_a.shuffle.join(' ')"`
+
+test100:
+	@ python3 pyviz.py `ruby -e "puts (1..100).to_a.shuffle.join(' ')"`
+
+test500:
+	@ python3 pyviz.py `ruby -e "puts (1..500).to_a.shuffle.join(' ')"`
+
+.PHONY: all libft re clean fclean bonus test3 test10 test100 test500
