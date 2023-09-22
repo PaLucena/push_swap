@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 13:04:49 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/18 09:35:38 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:23:21 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	ft_apply(t_list **a, t_list **b)
 	while (str)
 	{
 		ft_choose_mov(a, b, str);
+		free(str);
 		str = get_next_line(0);
 	}
 }

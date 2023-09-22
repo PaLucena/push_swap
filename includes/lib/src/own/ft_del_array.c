@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_del_array.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/29 16:38:34 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/22 16:17:13 by palucena         ###   ########.fr       */
+/*   Created: 2023/09/22 15:50:11 by palucena          #+#    #+#             */
+/*   Updated: 2023/09/22 15:54:24 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../libft.h"
 
-int	main(int ac, char **av)
+void	ft_del_array(char **array)
 {
-	t_list	*a;
-	t_list	*b;
-	int		max_index;
+	int	i;
 
-	max_index = check_args(ac, av, false);
-	a = NULL;
-	b = NULL;
-	a = init_a(a, ac, av);
-	ft_algorithm(&a, &b, max_index);
-	ft_clear(&a);
-	ft_clear(&b);
+	i = -1;
+	while (array[++i])
+		free(array[i]);
+	free(array);
 }

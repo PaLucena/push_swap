@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:11:10 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/18 09:30:10 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:13:11 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_sort_3(t_list **a, t_list **b);
 void	ft_algorithm(t_list **a, t_list **b, int max_index);
 
 /*		check.c			*/
-int		check_args(int ac, char **av);
+int		check_args(int ac, char **av, bool ch);
 
 /*		init.c			*/
 void	ft_position(t_list *stack);

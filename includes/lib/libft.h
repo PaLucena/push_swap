@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 12:06:31 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 17:47:11 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:54:47 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int				ft_line_len(char *str);
 
 /* my own functions */
 int				ft_strcmp(const char *s1, const char *s2);
+void			ft_del_array(char **array);
 
 /* push_swap useful functions */
 long			ft_long_atoi(const char *str);

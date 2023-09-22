@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 20:35:51 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/17 19:03:05 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 15:27:59 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_push(t_list **stack_from, t_list **stack_to, char iden, bool pr)
 {
 	t_list	*tmp;
 
-	if (stack_from)
+	if (*stack_from)
 	{
 		tmp = *stack_from;
 		*stack_from = (*stack_from)->next;
@@ -37,9 +37,9 @@ void	ft_push(t_list **stack_from, t_list **stack_to, char iden, bool pr)
 			tmp->next = *stack_to;
 			*stack_to = tmp;
 		}
+		ft_position(*stack_from);
+		ft_position(*stack_to);
 	}
-	ft_position(*stack_from);
-	ft_position(*stack_to);
 	if (pr)
 		ft_printf("p%c\n", iden);
 }
@@ -56,7 +56,7 @@ void	ft_swap(t_list **a, t_list **b, char iden, bool pr)
 	t_list	*tmp1;
 	t_list	*tmp2;
 
-	if (iden == 'a' || iden == 's')
+	if (*a && (iden == 'a' || iden == 's'))
 	{
 		tmp1 = *a;
 		tmp2 = (*a)->next;
@@ -65,7 +65,7 @@ void	ft_swap(t_list **a, t_list **b, char iden, bool pr)
 		tmp2->next = tmp1;
 		ft_position(*a);
 	}
-	if (iden == 'b' || iden == 's')
+	if (*b && (iden == 'b' || iden == 's'))
 	{
 		tmp1 = *b;
 		tmp2 = (*b)->next;
@@ -89,7 +89,7 @@ void	ft_rotate(t_list **a, t_list **b, char iden, bool pr)
 {
 	t_list	*tmp;
 
-	if (iden == 'a' || iden == 'r')
+	if (*a && (iden == 'a' || iden == 'r'))
 	{
 		tmp = *a;
 		*a = (*a)->next;
@@ -97,7 +97,7 @@ void	ft_rotate(t_list **a, t_list **b, char iden, bool pr)
 		tmp->next = NULL;
 		ft_position(*a);
 	}
-	if (iden == 'b' || iden == 'r')
+	if (*b && (iden == 'b' || iden == 'r'))
 	{
 		tmp = *b;
 		*b = (*b)->next;
@@ -133,9 +133,9 @@ void	ft_rr2(t_list **stack)
  */
 void	ft_reverse_rotate(t_list **a, t_list **b, int iden, bool pr)
 {
-	if (iden == 'a' || iden == 'r')
+	if (*a && (*a)->next && (iden == 'a' || iden == 'r'))
 		ft_rr2(a);
-	if ((iden == 'b' || iden == 'r') && *b)
+	if (*b && (*b)->next && (iden == 'b' || iden == 'r'))
 		ft_rr2(b);
 	if (pr)
 		ft_printf("rr%c\n", iden);

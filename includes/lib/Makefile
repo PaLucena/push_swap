@@ -18,7 +18,7 @@ SOURCE_GNL =		get_next_line.c get_next_line_utils.c
 
 SOURCE_PS =			ft_long_atoi.c ft_array_len.c ft_position.c ft_target_pos.c
 
-SOURCE_OWN =		ft_strcmp.c
+SOURCE_OWN =		ft_strcmp.c ft_del_array.c
 
 OBJ_PATH =			objs/
 OBJ_LIBFT_PATH =	$(OBJ_PATH)libft/

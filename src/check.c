@@ -6,13 +6,13 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:36:23 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 17:57:16 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:16:29 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	check_order(char **av, int a)
+void	check_order(char **av, int a,bool ch)
 {
 	int		i;
 	bool	order;
@@ -26,10 +26,14 @@ void	check_order(char **av, int a)
 		i++;
 	}
 	if (order)
+	{
+		if (ch)
+			write(1, "OK\n", 3);
 		error_msg(0);
+	}
 }
 
-void	check_int(char **av, int a)
+void	check_int(char **av, int a, bool ch)
 {
 	long	nb;
 	int		i;
@@ -42,10 +46,10 @@ void	check_int(char **av, int a)
 			error_msg(1);
 		i++;
 	}
-	check_order(av, a);
+	check_order(av, a, ch);
 }
 
-void	check_repeat(char **av, int a)
+void	check_repeat(char **av, int a, bool ch)
 {
 	int	i;
 	int	j;
@@ -61,10 +65,10 @@ void	check_repeat(char **av, int a)
 		}
 		i++;
 	}
-	check_int(av, a);
+	check_int(av, a, ch);
 }
 
-void	check_content(char **av, int a)
+void	check_content(char **av, int a, bool ch)
 {
 	int	i;
 	int	j;
@@ -81,10 +85,10 @@ void	check_content(char **av, int a)
 		}
 		i++;
 	}
-	check_repeat(av, a);
+	check_repeat(av, a, ch);
 }
 
-int	check_args(int ac, char **av)
+int	check_args(int ac, char **av, bool ch)
 {
 	char	**argv;
 	int		argc;
@@ -103,6 +107,8 @@ int	check_args(int ac, char **av)
 	}
 	else if (ac == 2)
 		error_msg(0);
-	check_content(argv, i);
+	check_content(argv, i, ch);
+	if (ac != argc)
+		ft_del_array(argv);
 	return (argc - 1);
 }

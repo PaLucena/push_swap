@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:00:46 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 17:53:54 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:42:37 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	ft_is_sorted(t_list **a, t_list *b)
 	bool	order;
 
 	order = true;
-	actual = *a;
-	while (actual->next)
+	actual = NULL;
+	if (*a)
+		actual = *a;
+	while (actual && actual->next)
 	{
 		if (actual->next->data < actual->data)
 			order = false;
@@ -37,7 +39,7 @@ int	main(int ac, char **av)
 	t_list	*b;
 	int		max_index;
 
-	max_index = check_args(ac, av);
+	max_index = check_args(ac, av, true);
 	a = NULL;
 	b = NULL;
 	a = init_a(a, ac, av);

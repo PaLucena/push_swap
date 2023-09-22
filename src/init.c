@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/02 22:03:05 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 17:06:58 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 16:01:15 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_list	*init_a(t_list *a, int ac, char **av)
 	}
 	while (argv[++i] != NULL)
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(argv[i])));
+	if (ac == 2)
+		ft_del_array(argv);
 	ft_index(a);
 	ft_position(a);
 	return (a);
