@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 18:44:39 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/11 15:34:55 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/22 11:19:13 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_get_cost(t_list **a, t_list **b)
 			curr_b->cost_b = (curr_b->pos);
 		else
 			curr_b->cost_b = ft_lstsize(*b) - curr_b->pos;
-		if (curr_b->target_pos < ft_lstsize(*a))
+		if (curr_b->target_pos < ft_lstsize(*a) / 2)
 			curr_b->cost_a = curr_b->target_pos;
 		else
 			curr_b->cost_a = ft_lstsize(*a) - curr_b->target_pos;
