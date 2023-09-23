@@ -6,7 +6,7 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 16:00:46 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/22 16:42:37 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:03:46 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,19 @@ int	main(int ac, char **av)
 	t_list	*b;
 	int		max_index;
 
-	max_index = check_args(ac, av, true);
+	max_index = check_args(ac, av);
 	a = NULL;
 	b = NULL;
 	a = init_a(a, ac, av);
+	if (check_order(&a))
+	{
+		write(1, "OK\n", 3);
+		ft_clear(&a);
+		exit (0);
+	}
 	ft_apply(&a, &b);
 	ft_is_sorted(&a, b);
 	ft_clear(&a);
 	ft_clear(&b);
+	return (0);
 }

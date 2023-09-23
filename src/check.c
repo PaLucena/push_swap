@@ -6,34 +6,29 @@
 /*   By: palucena <palucena@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 16:36:23 by palucena          #+#    #+#             */
-/*   Updated: 2023/09/22 16:16:29 by palucena         ###   ########.fr       */
+/*   Updated: 2023/09/23 16:01:40 by palucena         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	check_order(char **av, int a,bool ch)
+bool	check_order(t_list	**stack)
 {
-	int		i;
+	t_list	*current;
 	bool	order;
 
-	i = a;
 	order = true;
-	while (av[i] && av[i + 1] != NULL)
+	current = *stack;
+	while (current && current->next)
 	{
-		if (ft_atoi(av[i]) > ft_atoi(av[i + 1]))
+		if (current->data > current->next->data)
 			order = false;
-		i++;
+		current = current->next;
 	}
-	if (order)
-	{
-		if (ch)
-			write(1, "OK\n", 3);
-		error_msg(0);
-	}
+	return (order);
 }
 
-void	check_int(char **av, int a, bool ch)
+void	check_int(char **av, int a)
 {
 	long	nb;
 	int		i;
@@ -46,10 +41,9 @@ void	check_int(char **av, int a, bool ch)
 			error_msg(1);
 		i++;
 	}
-	check_order(av, a, ch);
 }
 
-void	check_repeat(char **av, int a, bool ch)
+void	check_repeat(char **av, int a)
 {
 	int	i;
 	int	j;
@@ -65,10 +59,10 @@ void	check_repeat(char **av, int a, bool ch)
 		}
 		i++;
 	}
-	check_int(av, a, ch);
+	check_int(av, a);
 }
 
-void	check_content(char **av, int a, bool ch)
+void	check_content(char **av, int a)
 {
 	int	i;
 	int	j;
@@ -85,10 +79,10 @@ void	check_content(char **av, int a, bool ch)
 		}
 		i++;
 	}
-	check_repeat(av, a, ch);
+	check_repeat(av, a);
 }
 
-int	check_args(int ac, char **av, bool ch)
+int	check_args(int ac, char **av)
 {
 	char	**argv;
 	int		argc;
@@ -107,7 +101,7 @@ int	check_args(int ac, char **av, bool ch)
 	}
 	else if (ac == 2)
 		error_msg(0);
-	check_content(argv, i, ch);
+	check_content(argv, i);
 	if (ac != argc)
 		ft_del_array(argv);
 	return (argc - 1);
