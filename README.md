@@ -3,6 +3,7 @@
 
 <h2>Description</h2>
 <p><strong>push_swap</strong> is a project from the 42 cursus that involves creating a program to sort a stack of integers using a limited set of operations. The main objective is to understand and implement various sorting algorithms and to optimize them for performance and efficiency within the constraints of the project.</p>
+<div align="center"><img height="250" src="https://github.com/PaLucena/push_swap/blob/main/img/push_swap.png"></div>
 
 <h2>Table of Contents</h2>
 <ul>
